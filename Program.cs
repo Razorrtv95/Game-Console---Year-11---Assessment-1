@@ -115,10 +115,21 @@ gameInput:
 
     int hello;
 
-    try
+    while (true)
     {
-        hello = Convert.ToInt32(getuserinput(""));
+        if (int.TryParse(getuserinput(""), out hello) && (hello == 1 || hello == 2)){
+            break;
+        }
+        Console.WriteLine("Invalid input. Please enter the correct number.\n");
+        Thread.Sleep(1000);
+        Console.Clear();
+        goto gameInput;
+    }
 
+    // try
+    // {
+    //     hello = Convert.ToInt32(getuserinput(""));
+    
     gamefiveInput:
 
         if (hello == 1)
@@ -130,17 +141,11 @@ gameInput:
             
             Console.ForegroundColor = ConsoleColor.DarkRed;
 
-            Console.WriteLine(" ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄       ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄       ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄ ");
-            Console.WriteLine("▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌");
-            Console.WriteLine(" ▀▀▀▀█░█▀▀▀▀  ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀       ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀       ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀ ");
-            Console.WriteLine("     ▐░▌          ▐░▌     ▐░▌                    ▐░▌     ▐░▌       ▐░▌▐░▌                    ▐░▌     ▐░▌       ▐░▌▐░▌  ");
-            Console.WriteLine("     ▐░▌          ▐░▌     ▐░▌                    ▐░▌     ▐░█▄▄▄▄▄▄▄█░▌▐░▌                    ▐░▌     ▐░▌       ▐░▌▐░█▄▄");
-            Console.WriteLine("     ▐░▌          ▐░▌     ▐░▌                    ▐░▌     ▐░░░░░░░░░░░▌▐░▌                    ▐░▌     ▐░▌       ▐░▌▐░░░░░░░░░░░▌");
-            Console.WriteLine("     ▐░▌          ▐░▌     ▐░▌                    ▐░▌     ▐░█▀▀▀▀▀▀▀█░▌▐░▌                    ▐░▌     ▐░▌       ▐░▌▐░█▀▀▀▀▀▀▀▀▀");
-            Console.WriteLine("     ▐░▌          ▐░▌     ▐░▌                    ▐░▌     ▐░▌       ▐░▌▐░▌                    ▐░▌     ▐░▌       ▐░▌▐░▌ ");
-            Console.WriteLine("     ▐░▌      ▄▄▄▄█░█▄▄▄▄ ▐░█▄▄▄▄▄▄▄▄▄           ▐░▌     ▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄▄▄           ▐░▌     ▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄");
-            Console.WriteLine("     ▐░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌          ▐░▌     ▐░▌       ▐░▌▐░░░░░░░░░░░▌          ▐░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌");
-            Console.WriteLine("      ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀            ▀       ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀            ▀       ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ ");
+            Console.WriteLine(" ██████████  ██████    █████████████  ██████    ██████████████ ███████ ");
+            Console.WriteLine("     ██   ██ ██            ██  ██   ████            ██  ██    ████  ");
+            Console.WriteLine("     ██   ██ ██            ██  █████████            ██  ██    ███████   ");
+            Console.WriteLine("     ██   ██ ██            ██  ██   ████            ██  ██    ████      ");
+            Console.WriteLine("     ██   ██ ██████        ██  ██   ██ ██████       ██   ██████ ███████ \n");
         
 
             Console.ForegroundColor = ConsoleColor.White;
@@ -240,17 +245,66 @@ gameInput:
             printboard();
 
 
-            if (CheckVictory() && player1turn)
-                Console.WriteLine("Player 2 wins!");
+            // if (CheckVictory() && player1turn)
+            //     Console.WriteLine("Player 2 wins!");
+            // else if (CheckVictory() && !player1turn)
+            //     Console.WriteLine("Player 1 wins!");
+            // else
+            //     Console.WriteLine("It's a draw!");
 
-            else if (CheckVictory() && !player1turn)
-                Console.WriteLine("Player 1 wins!");
-            else
-                Console.WriteLine("It's a draw!");
+            if (CheckVictory())
+            {
+                if (player1turn) {
+
+                    Console.WriteLine("Player 2 wins!\n");
+
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+                    Console.WriteLine(" █████     ██         ██████     ██     ██████     ██   ██    ████████    ██ ");
+                    Console.WriteLine("██   ██    ██         ██   ██    ██    ██          ██   ██       ██       ██ ");
+                    Console.WriteLine("███████    ██         ██████     ██    ██   ███    ███████       ██       ██ ");
+                    Console.WriteLine("██   ██    ██         ██   ██    ██    ██    ██    ██   ██       ██           ");
+                    Console.WriteLine("██   ██    ███████    ██   ██    ██     ██████     ██   ██       ██       ██  ");
+
+                }
+
+                else 
+                {
+
+                    Console.WriteLine("Player 1 wins!\n");
+
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+                    Console.WriteLine(" █████     ██         ██████     ██     ██████     ██   ██    ████████    ██ ");
+                    Console.WriteLine("██   ██    ██         ██   ██    ██    ██          ██   ██       ██       ██ ");
+                    Console.WriteLine("███████    ██         ██████     ██    ██   ███    ███████       ██       ██ ");
+                    Console.WriteLine("██   ██    ██         ██   ██    ██    ██    ██    ██   ██       ██           ");
+                    Console.WriteLine("██   ██    ███████    ██   ██    ██     ██████     ██   ██       ██       ██  ");
+
+                }
+
+            
+
+            }  
+
+            else {
+
+                Console.WriteLine("It's a draw!\n");  
+
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine("███    ██     ██████         ██     ██    ██    ███    ██    ███    ██    ███████    ██████     ██ ");
+                Console.WriteLine("████   ██    ██    ██        ██     ██    ██    ████   ██    ████   ██    ██         ██   ██    ██ ");
+                Console.WriteLine("██ ██  ██    ██    ██        ██  █  ██    ██    ██ ██  ██    ██ ██  ██    █████      ██████     ██ ");
+                Console.WriteLine("██  ██ ██    ██    ██        ██ ███ ██    ██    ██  ██ ██    ██  ██ ██    ██         ██   ██       ");
+                Console.WriteLine("██   ████     ██████          ███ ███     ██    ██   ████    ██   ████    ███████    ██   ██    ██");
+            }
 
 
 
             gamefourInput: // return to menu for knots and crosses
+
+                Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine("\nDo you want to:\n");
                 Console.WriteLine("1. Play again. ");
@@ -307,6 +361,7 @@ gameInput:
                 {
                     Console.WriteLine("Please pick one of the three options.");
                     Thread.Sleep(1000);
+                    Console.Clear();
                     goto gamefourInput;
 
                 }
@@ -370,31 +425,12 @@ gameInput:
             
             Console.ForegroundColor = ConsoleColor.DarkGreen;
 
-            Console.WriteLine(" ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄    ▄       ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄    ");
-            Console.WriteLine("▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌  ▐░▌     ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌  ");
-            Console.WriteLine("▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░▌ ▐░▌      ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌  ");
-            Console.WriteLine("▐░▌       ▐░▌▐░▌       ▐░▌▐░▌          ▐░▌▐░▌       ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌          ▐░▌       ▐░▌    ");
-            Console.WriteLine("▐░█▄▄▄▄▄▄▄█░▌▐░▌       ▐░▌▐░▌          ▐░▌░▌        ▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌     ");
-            Console.WriteLine("▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░▌          ▐░░▌         ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌    ");
-            Console.WriteLine("▐░█▀▀▀▀█░█▀▀ ▐░▌       ▐░▌▐░▌          ▐░▌░▌        ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀█░█▀▀    ");
-            Console.WriteLine("▐░▌     ▐░▌  ▐░▌       ▐░▌▐░▌          ▐░▌▐░▌       ▐░▌          ▐░▌       ▐░▌▐░▌          ▐░▌          ▐░▌     ▐░▌        ");
-            Console.WriteLine("▐░▌      ▐░▌ ▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌ ▐░▌      ▐░▌          ▐░▌       ▐░▌▐░▌          ▐░█▄▄▄▄▄▄▄▄▄ ▐░▌      ▐░▌     ");
-            Console.WriteLine("▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌  ▐░▌     ▐░▌          ▐░▌       ▐░▌▐░▌          ▐░░░░░░░░░░░▌▐░▌       ▐░▌    ");
-            Console.WriteLine(" ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀    ▀       ▀            ▀         ▀  ▀            ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀       ");
-
-            Console.WriteLine("");
-
-            Console.WriteLine(" ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄");
-            Console.WriteLine("▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌");
-            Console.WriteLine("▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀  ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀ ");
-            Console.WriteLine("▐░▌          ▐░▌               ▐░▌     ▐░▌          ▐░▌          ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌         ");
-            Console.WriteLine("▐░▌          ▐░▌               ▐░▌     ▐░▌          ▐░▌          ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌         ");
-            Console.WriteLine("▐░▌          ▐░▌               ▐░▌     ▐░▌          ▐░▌          ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌         ");
-            Console.WriteLine(" ▀▀▀▀▀▀▀▀▀█░▌▐░▌               ▐░▌      ▀▀▀▀▀▀▀▀▀█░▌ ▀▀▀▀▀▀▀▀▀█░▌▐░▌       ▐░▌▐░█▀▀▀▀█░█▀▀  ▀▀▀▀▀▀▀▀▀█░▌");
-            Console.WriteLine("          ▐░▌▐░▌               ▐░▌               ▐░▌          ▐░▌▐░▌       ▐░▌▐░▌     ▐░▌            ▐░▌");
-            Console.WriteLine(" ▄▄▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄  ▄▄▄▄█░█▄▄▄▄  ▄▄▄▄▄▄▄▄▄█░▌ ▄▄▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░▌      ▐░▌  ▄▄▄▄▄▄▄▄▄█░▌");
-            Console.WriteLine("▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌");
-            Console.WriteLine(" ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀ \n");
+            Console.WriteLine("██████  ██████  ████████   ██    ██████  █████ ██████ █████████████     ███████ ██████████████████████ ██████ ██████ ███████  ");
+            Console.WriteLine("██   ████    ████     ██  ██     ██   ████   ████   ████     ██   ██    ██     ██     ████     ██     ██    ████   ████ ");
+            Console.WriteLine("██████ ██    ████     █████      ██████ █████████████ █████  ██████     █████████     ██████████████████    ████████ ███████");
+            Console.WriteLine("██   ████    ████     ██  ██     ██     ██   ████     ██     ██   ██         ████     ██     ██     ████    ████   ██     ██");
+            Console.WriteLine("██   ██ ██████  ████████   ██    ██     ██   ████     █████████   ██    ███████ ██████████████████████ ██████ ██   █████████ \n");
+    
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -528,18 +564,25 @@ gameInput:
                 }
 
 
-                // Console.WriteLine("\n------------------------------------\n");
-                // Console.WriteLine("Press the enter key to continue to the next round...");
-                // getuserinput("");
+                Console.WriteLine("\n------------------------------------\n");
+                Console.WriteLine("Press the enter key to continue to the next round...");
+                getuserinput("");
 
-                Thread.Sleep(2000);
-
+                
             }
 
             if (myScore == 3)
             {
                 
                 Console.Clear();
+
+                Console.ForegroundColor = ConsoleColor.Green;
+
+                Console.WriteLine("██    ██     ██████     ██    ██        ██     ██    ██    ███    ██ ");
+                Console.WriteLine(" ██  ██     ██    ██    ██    ██        ██     ██    ██    ████   ██ ");
+                Console.WriteLine("  ████      ██    ██    ██    ██        ██  █  ██    ██    ██ ██  ██ ");
+                Console.WriteLine("   ██       ██    ██    ██    ██        ██ ███ ██    ██    ██  ██ ██ ");
+                Console.WriteLine("   ██        ██████      ██████          ███ ███     ██    ██   ████ \n");
 
                 Console.WriteLine("You beat the one and only computer!\n");
                 Console.WriteLine("\nYou: " + myScore);
@@ -556,6 +599,18 @@ gameInput:
             {
 
                 Console.Clear();
+
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("██    ██     ██████     ██    ██        ██          ██████     ███████    ███████   ██ ");
+                Console.WriteLine(" ██  ██     ██    ██    ██    ██        ██         ██    ██    ██         ██        ██ ");
+                Console.WriteLine("  ████      ██    ██    ██    ██        ██         ██    ██    ███████    █████     ██ ");
+                Console.WriteLine("   ██       ██    ██    ██    ██        ██         ██    ██         ██    ██  ");
+                Console.WriteLine("   ██        ██████      ██████          ██████      ██████     ███████    ███████  ██ \n");
+
+                Console.WriteLine("");
+
+                Console.ForegroundColor = ConsoleColor.White;
                 
                 Console.WriteLine("Better luck next time haha!\n");
                 Console.WriteLine("\nYou: " + myScore);
@@ -613,26 +668,22 @@ gameInput:
                 default:
                     Console.WriteLine("\nPlease pick one of the three options.");
                     Thread.Sleep(1000);
+                    Console.Clear();
                     goto gamethreeInput;
             }
 
 
         }
-        else
-        {
+        
 
-            Console.WriteLine("Please enter the right number.");
-            goto gameInput;
-        }
+    //}
+    // catch
+    // {
+    //     Console.WriteLine("");
+    //     Console.WriteLine("It needs to be a number.");
+    //     goto gameInput;
 
-    }
-    catch
-    {
-        Console.WriteLine("");
-        Console.WriteLine("It needs to be a number.");
-        goto gameInput;
-
-    }
+    // }
 
 
 }
